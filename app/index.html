@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Neon Vice Cover Studio</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+<header class="top">
+  <h1 class="brand"><span class="brand-neon">NEON</span> <span class="brand-vice">VICE</span></h1>
+  <p class="tagline">Cover Studio &mdash; turn your photo and caption into a multi-panel sunset poster.</p>
+</header>
+
+<main class="layout">
+  <section class="controls" aria-label="Cover controls">
+    <h2>Your photos</h2>
+    <p class="hint">Three panels. Upload a photo for each, or try a sample shot.</p>
+
+    <div class="slot" data-slot="0">
+      <h3>Panel 1 &middot; hero</h3>
+      <div class="slot-row">
+        <label class="file-btn">Upload photo
+          <input type="file" accept="image/*" data-photo="0" hidden>
+        </label>
+        <button type="button" data-sample="0" data-file="samples/boulevard.jpg">Sample: boulevard</button>
+        <button type="button" data-sample="0" data-file="samples/pier.jpg">Sample: pier</button>
+      </div>
+      <label>Zoom <input type="range" min="100" max="220" value="100" data-zoom="0"></label>
+      <label>Left&ndash;right <input type="range" min="-40" max="40" value="0" data-panx="0"></label>
+      <label>Up&ndash;down <input type="range" min="-40" max="40" value="0" data-pany="0"></label>
+    </div>
+
+    <div class="slot" data-slot="1">
+      <h3>Panel 2</h3>
+      <div class="slot-row">
+        <label class="file-btn">Upload photo
+          <input type="file" accept="image/*" data-photo="1" hidden>
+        </label>
+        <button type="button" data-sample="1" data-file="samples/boulevard.jpg">Sample: boulevard</button>
+        <button type="button" data-sample="1" data-file="samples/pier.jpg">Sample: pier</button>
+      </div>
+      <label>Zoom <input type="range" min="100" max="220" value="100" data-zoom="1"></label>
+      <label>Left&ndash;right <input type="range" min="-40" max="40" value="0" data-panx="1"></label>
+      <label>Up&ndash;down <input type="range" min="-40" max="40" value="0" data-pany="1"></label>
+    </div>
+
+    <div class="slot" data-slot="2">
+      <h3>Panel 3</h3>
+      <div class="slot-row">
+        <label class="file-btn">Upload photo
+          <input type="file" accept="image/*" data-photo="2" hidden>
+        </label>
+        <button type="button" data-sample="2" data-file="samples/boulevard.jpg">Sample: boulevard</button>
+        <button type="button" data-sample="2" data-file="samples/pier.jpg">Sample: pier</button>
+      </div>
+      <label>Zoom <input type="range" min="100" max="220" value="100" data-zoom="2"></label>
+      <label>Left&ndash;right <input type="range" min="-40" max="40" value="0" data-panx="2"></label>
+      <label>Up&ndash;down <input type="range" min="-40" max="40" value="0" data-pany="2"></label>
+    </div>
+
+    <h2>Caption</h2>
+    <label class="text-label">Title
+      <input type="text" id="titleInput" value="VICE CITY" maxlength="24">
+    </label>
+    <label class="text-label">Tagline
+      <input type="text" id="tagInput" value="Two stories. One sunset." maxlength="60">
+    </label>
+
+    <h2>Colour grade</h2>
+    <div class="choice-row" id="gradeRow">
+      <button type="button" data-grade="sunset" class="active">Sunset</button>
+      <button type="button" data-grade="neon">Neon</button>
+      <button type="button" data-grade="noir">Noir</button>
+    </div>
+
+    <h2>Panel layout</h2>
+    <div class="choice-row" id="layoutRow">
+      <button type="button" data-layout="hero-left" class="active">Hero left</button>
+      <button type="button" data-layout="hero-top">Hero top</button>
+      <button type="button" data-layout="triptych">Triptych</button>
+    </div>
+
+    <h2>Export</h2>
+    <label class="text-label">Size
+      <select id="sizeSelect">
+        <option value="1080x1080">1080 &times; 1080 (square)</option>
+        <option value="1080x1350">1080 &times; 1350 (portrait)</option>
+        <option value="1920x1080">1920 &times; 1080 (wide)</option>
+      </select>
+    </label>
+    <button type="button" id="exportBtn" class="export-btn">Export PNG</button>
+    <p class="hint">The export is rendered on a canvas in your browser. Nothing is uploaded anywhere.</p>
+  </section>
+
+  <section class="stage-wrap" aria-label="Poster preview">
+    <div class="poster grade-sunset layout-hero-left" id="poster">
+      <div class="panel panel-0"><img id="panelImg0" alt="Panel 1 photo"></div>
+      <div class="panel panel-1"><img id="panelImg1" alt="Panel 2 photo"></div>
+      <div class="panel panel-2"><img id="panelImg2" alt="Panel 3 photo"></div>
+      <div class="scrim"></div>
+      <div class="caption">
+        <div class="caption-kicker">NEON VICE &middot; COVER STUDIO</div>
+        <h2 class="caption-title" id="captionTitle">VICE CITY</h2>
+        <p class="caption-tag" id="captionTag">Two stories. One sunset.</p>
+      </div>
+    </div>
+
+    <div class="result" id="result" hidden>
+      <h2>Your export</h2>
+      <img id="resultImg" alt="Exported cover art">
+      <p><a id="downloadLink" href="#" download="neon-vice-cover.png">Download PNG</a></p>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <p>Neon Vice Cover Studio &mdash; an offline fan-made poster tool. Not affiliated with Rockstar Games. No logos, artwork or fonts from the game are used here; the lettering is plain system type.</p>
+</footer>
+
+<script type="module" src="./main.js"></script>
+</body>
+</html>
